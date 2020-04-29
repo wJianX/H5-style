@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>{$pagetitle}</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/bought.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <style>
+        .zwdd img{
+            width: 100%;
+            padding-top: 5rem;
+        }
+        .zwdd p{
+            text-align: center;
+            padding-top: 3rem;
+            color: #8a8a8a;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="app_home">
+        <!--  头部 head  -->
+        <div class="app_head">
+            <!--  头部  -->
+            <div class="index_head">
+                <div class="index-head-left" onClick="javascript:history.go(-1)">
+                    <img src="/webs/images/WechatIMG65.png" alt="">
+                </div>
+                <div class="index-head-center">我买到的</div>
+                <div class="index-head-scan display_flex right_text"></div>
+            </div>
+            <!--      分类产品 never      -->
+            <div class="app_never homo_page">
+                <div id="topNav" class="swiper-container">
+                    <div class="swiper-wrapper color_huise">
+                        <div class="swiper-slide active"><b>全部</b></div>
+                        <div class="swiper-slide"><b>待付款</b></div>
+                        <div class="swiper-slide"><b>待发货</b></div>
+                        <div class="swiper-slide"><b>待收货</b></div>
+                        <div class="swiper-slide"><b>待评价</b></div>
+                    </div>
+                </div>
+<!--                <div class="never_right"><p><a>其他</a></p></div>-->
+            </div>
+        </div>
+        <!--  内容展示区 center  -->
+        <div id="center"></div>
+        <div class="app_center bought_all" id="app_center">
+            {if !$order}
+            <div class="zwdd"><img src="/webs/images/zwdd.png"><p>暂时还没有订单~</p></div>
+            {else /}
+            {foreach $order as $value}
+            <div class="list_product_item background_white" id="orderid{$value['Putid']}">
+                <div class="product_header display_flex">
+                    <div class="left_all display_flex">
+                        <img class="sp_img" src="{php}echo config('aliyun')['bucketurl'].$value['shop']['Dianpic']{/php}" alt="">
+                        <p class="display_flex">
+                            <span onClick="javascript:window.location.href='/index/shop.html?shopid={$value['dianid']}'">{$value['shop']['Dianmc']}</span>
+                            <img class="jiantou" src="/webs/images/sjjt@3x.png" alt="">
+                        </p>
+                    </div>
+                    <b class="color_zhuti">{$value['orderstate']}</b>
+                </div>
+                {if $value['State'] == 1}
+                <div class="jiesao_img display_flex" onClick="javascript:window.location.href='/index/product/cartqr.html?orderid={$value['Putid']}';">
+                {else \}
+                <div class="jiesao_img display_flex" onClick="javascript:window.location.href='/index/product/orderdetail.html?orderid={$value['Putid']}';">{/if}
+                    <img src="{php}echo config('aliyun')['bucketurl'].json_decode($value['picurl'],true)[0]{/php}" alt="">
+                    <div class="miaoshu_shopping">
+                        <p>{$value['title']}</p>
+                        <div class="biaojia">
+                            <s class="color_zhuti">¥</s>
+                            <em class="color_zhuti">{$value['jiage']}</em>
+                            <span class="color_zhuti">爆款</span>
+                            <a>{$value['product']['Chengse']}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="lianxita display_flex">
+                    <p class="display_flex">
+                        <img src="/webs/images/xxicon@3x.png" alt="">
+                        <span>联系他</span>
+                    </p>
+                    {switch $value['State'] }
+                    {case 1 }<p><a href='/index/product/cartqr.html?orderid={$value['Putid']}'>去付款</a></p>{/case}
+                    {case 2}{/case}
+                    {case 3}<p><a>确认收货</a></p>{/case}
+                    {case 4}<p><a>评价</a></p>{/case}
+                    {case 8}{/case}
+                    {default /}<p onClick="delorder({$value['Putid']})"><a>删除订单</a></p>
+                    {/switch}
+                </div>
+            </div>
+            {/foreach}
+                {if count($order)>=PAGE_COUNT}
+                <div style="height: 50px;line-height: 50px;text-align: center;font-size: 10px" onClick="load_more()" id="load_more">加载更多</div>
+                {else \}
+                <div style="height: 50px;line-height: 50px;text-align: center;font-size: 10px">已到最后</div>
+                {/if}
+            <div id="center1"></div>
+            {/if}
+        </div>
+    </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/library/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="js/library/swiper.min.js"></script>
+<script type="text/javascript" src="js/bought.js"></script>
+<script type="text/javascript" src="js/layer_mobile/layer.js"></script>
+<script type="text/javascript">
+    var page = 2;//页数
+    //获取get的值
+    var $_GET = (function(){
+        var url = window.document.location.href.toString();
+        var u = url.split("?");
+        if(typeof(u[1]) == "string"){
+            u = u[1].split("&");
+            var get = {};
+            for(var i in u){
+                var j = u[i].split("=");
+                get[j[0]] = j[1];
+            }
+            return get;
+        } else {
+            return {};
+        }
+    })();
+    if($_GET['state']){
+        $("#topNav  .active").removeClass('active')
+        $("#topNav .swiper-slide").eq($_GET['state']).addClass('active')
+    }
+    function load_more(state='') {
+        console.log(page);
+        if(state === ''){
+            state = $_GET['state']?$_GET['state']:0;
+        }
+        console.log(state);
+        $.ajax({
+            url: '/index/mine/getorder',
+            data: {'state':state,'page':page},
+            type: 'POST',
+            dataType: 'json',
+            success: function(result) {
+                // console.log(result)
+                var obj = eval(result);
+                if(obj.code == 100000) {
+                    var tag = "";
+                    var orderpage = '';
+                    if(obj.data.order.length<1){
+                        // tag += "<div>还没有商品</div>";
+                    }
+                    for(var i =0;i<obj.data.order.length;i++){
+                        if(obj.data.order[i]['State'] == 1){
+                            orderpage = 'cartqr'
+                        }else{
+                            orderpage = 'orderdetail'
+                        }
+                        // console.log(obj.data[i]);
+                        tag += "<div class='list_product_item background_white' id=\"orderid"+
+                            obj.data.order[i]['Putid']+"\"><div class='product_header display_flex'><div class='left_all display_flex'><img class='sp_img' src='"+obj.data.order[i]['shop']['Dianpic']+"' alt=''><p class='display_flex'><span onclick="+'"javascript:location.href='+"'/index/shop.html?shopid="+obj.data.order[i]['dianid']+"';"+'"'+">"+
+                            obj.data.order[i]['shop']['Dianmc']+"</span><img class='jiantou' src='/webs/images/sjjt@3x.png'></p></div>"+
+                            "<b class=\"color_zhuti\">"+obj.data.order[i]['orderstate']+"</b>" +
+                            "                </div>"+
+                            "<div class='jiesao_img display_flex' onclick="+'"javascript:location.href='+"'/index/product/"+orderpage+".html?orderid="+obj.data.order[i]['Putid']+"';"+'"'+"><img src='"+obj.data.order[i]['picurl']+"'><div class='miaoshu_shopping'>"+
+                            "<p>"+obj.data.order[i]['title']+"</p><div class='biaojia'>" +
+                            "<s class='color_zhuti'>¥</s><em class='color_zhuti'>"+obj.data.order[i]['jiage']+"</em>"+
+                            "<span class='color_zhuti'>爆款</span><a>"+obj.data.order[i]['product']['Chengse']+"</a></div></div></div>"+
+                            "<div class=\"lianxita display_flex\">" +
+                            "                    <p class=\"display_flex\">" +
+                            "                        <img src=\"/webs/images/xxicon@3x.png\" alt=\"\">" +
+                            "                        <span>联系他</span>" +
+                            "                    </p>";
+                        switch(obj.data.order[i]['State']) {
+                            case 1:
+                                tag += "                    <p><a href='/index/product/cartqr.html?orderid="+obj.data.order[i]['Putid']+"'>去付款</a></p>";
+                                break;
+                            case 2:
+                                tag += " ";
+                                break;
+                            case 3:
+                                tag += "                     <p><a>确认收货</a></p>";
+                                break;
+                            case 4:
+                                tag += "                    <p><a>评价</a></p> ";
+                                break;
+                            case 8:
+                                tag += "    ";
+                                break;
+                            default:
+                                tag += "                    <p onclick=\"delorder("+obj.data.order[i]['Putid']+")\"><a>删除订单</a></p>";
+                        }
+                           tag += "                </div></div>";
+                    }
+                    if(obj.data.order.length>=obj.data.pagecount){
+                        tag += '<div style="height: 50px;line-height: 50px;text-align: center;font-size: 10px" onclick="load_more('+state+')" id="load_more">加载更多</div>';
+                    }else{
+                        tag += '<div style="height: 50px;line-height: 50px;text-align: center;font-size: 10px">已到最后</div>';
+                    }
+                    var products=document.getElementById("load_more");
+                    products.parentNode.removeChild(products);//删除整个div标签
+                    // console.log(tag);
+                    document.getElementById('center1').insertAdjacentHTML("beforebegin", tag);
+                }
+                if(obj.code == 100015){
+                    //跳转到登录页面
+                    window.location.href="/loginreg.html";
+                }
+            },
+            error: function(err) {
+                layer.open({
+                    content: '网络错误'
+                    ,skin: 'msg'
+                    ,time: 2 //2秒后自动关闭
+                    ,style:'bottom:5rem'
+                });
+            }
+        })
+        page++;
+    }
+    function delorder(orderid) {
+        $.ajax({
+            url: '/index/mine/delorder',
+            data: {'orderid':orderid},
+            type: 'POST',
+            dataType: 'json',
+            success: function(result) {
+                // console.log(result)
+                var obj = eval(result);
+                if(obj.code == 100000) {
+                    layer.open({
+                        content: '成功'
+                        ,skin: 'msg'
+                        ,time: 2 //2秒后自动关闭
+                        ,style:'bottom:5rem'
+                    });
+                    document.getElementById('orderid'+orderid).remove();
+                }else {
+                    layer.open({
+                        content: obj.message
+                        ,skin: 'msg'
+                        ,time: 2 //2秒后自动关闭
+                        ,style:'bottom:5rem'
+                    });
+                }
+            },
+            error: function(err) {
+                layer.open({
+                    content: '网络错误'
+                    ,skin: 'msg'
+                    ,time: 2 //2秒后自动关闭
+                    ,style:'bottom:5rem'
+                });
+            }
+        })
+    }
+</script>
+</body>
+</html>

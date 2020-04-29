@@ -1,0 +1,59 @@
+#help{
+    background: #fff;
+}
+body,html,.index_head{
+    background: #fff;
+}
+.my_center{
+    background-color: rgb(245, 245, 245);
+    padding: .3rem .65rem;
+}
+.mc{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: .4rem 0;
+}
+.mc div{
+    width: 23%;
+    text-align: center;
+    background-color: #fff;
+    padding: .3rem;
+    box-sizing: border-box;
+}
+.mc img{
+    margin-bottom: .3rem;
+    height: 1.8rem;
+}
+.mc p{
+    font-size: .6rem;
+}
+
+.mycollapse{
+    background: #fff;
+    overflow: hidden;
+    padding: 0 .6rem;
+}
+.mycollapse h3{
+    margin: 0;
+}
+.mycollapse h3 a{
+    background: url(../images/sprite.png) right 13px no-repeat;
+    display: block;
+    padding: .6rem;
+    margin: 0 .4rem 0 0;
+    color: rgb(77, 77, 77);
+    text-decoration: none;
+    font-size: .8rem;
+}
+.mycollapse div{
+    font-size: .8rem;
+    background-color: rgb(228, 228, 228);
+    padding: .6rem .4rem;
+    box-sizing: border-box;
+    margin: 0 .6rem;
+}
+
+.mycollapse h3.open a{
+    background-position: right -25px;
+}

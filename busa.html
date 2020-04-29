@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>{$pagetitle}</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="certification.css">
+    <style>
+        .authentication-bg{
+            position: fixed;
+            z-index: 110;
+            top: 0;
+            background:rgba(0,0,0,0.5);
+            width: 100%;
+            height: 100vh;
+        }
+        .popuo-login{
+        width:16.6rem;
+        height:16.4rem;
+        border:none;
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        margin: auto;
+    }
+    .layui-m-layer1 .layui-m-layerchild{
+        /* border-radius: .5rem !important; */
+        background-color: transparent;
+        box-shadow: none;
+    }
+    #popuo-header{
+        width:16.6rem;
+        height:18.5rem;
+        background: gray;
+        display: none;
+    }
+    .popup-header-center{
+        width: 7rem;
+        height: 7.5rem;
+        background: yellow;
+        border-radius: 50%;
+    }
+    .popup-top{
+        width: 6rem;
+        height: 6rem;
+        border-radius: 50%;
+        position: relative;
+        z-index: 10;
+    }
+    .popup-bottom{
+        position: absolute;
+        width:16.6rem;
+        height: 13.4rem;
+        bottom: 0;
+        background-color: #fff;
+        z-index: 5;
+        border-top-left-radius: .5rem;
+        border-top-right-radius: .5rem;
+        border-bottom-right-radius: .5rem;
+        border-bottom-left-radius: .5rem;
+        display: flex;
+        justify-content: center;
+        }
+        .popup-font{
+            margin-top: 4.2rem;
+            font-size: .9rem;
+            font-weight: bold;
+            margin-bottom: .7rem;
+            text-align: center;
+        }
+        .popup-font-bottom{
+            font-size: .8rem;
+            color: #999;
+            text-align: center;
+        }
+        .reflect{
+            width: 12.2rem;
+            height: 2.2rem;
+            background-color: #f54f70;
+            border-radius: 4.5rem;
+            text-align: center;
+            line-height: 2.2rem;
+            color: #fff;
+            font-size: .9rem;
+            margin-top: 1.5rem;
+        }
+        .popup-top img{
+            width: 6rem;
+            height: 6rem;
+        } 
+        .authentication-close{
+                width: 1.7rem;
+                height: 1.7rem;
+                position: absolute;
+                bottom: 2.5rem;
+                left: 50%;
+                margin-left: -1.35rem;
+        }
+        .authentication-close img{
+            width: 1.7rem;
+            height: 1.7rem;
+            border-radius: 50%;
+        }
+        .close-now{
+            position: absolute;
+            top: .5rem;
+            right: .8rem;
+        }
+        .close-now img{
+            width: 1.2rem;
+            height: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+<div class="certification_all">
+    <!--  头部  -->
+    <div class="app_head">
+        <div class="index_head">
+            <div class="index-head-left" onClick="javascript:history.go(-1)">
+                <img src="/webs/images/WechatIMG65.png" alt="">
+            </div>
+            <div class="index-head-center">商家认证</div>
+            <div class="index-head-scan display_flex right_text"></div>
+        </div>
+    </div>
+    <div class="shangjiapintai background_white">
+        <div class="shangjiapintai_item">
+            <p>优选商家</p>
+            <p><span>平台严选，用户信赖，更多特权</span></p>
+        </div>
+        <div class="shangjiaquanyi">
+            <p class="quanyi">商家权益及责任</p>
+            <div class="shangjialiucheng">
+                <div class="list_libiao display_flex">
+                    <span><s>1</s></span>
+                    <img src="/webs/images/WechatIMG220.png" alt="">
+                    <div>
+                        <p>发布数量300</p>
+                        <p><em>更多发布数量，更多商品出售</em></p>
+                    </div>
+                </div>
+                <div class="list_libiao display_flex">
+                    <span><s>2</s></span>
+                    <img src="/webs/images/WechatIMG221.png" alt="">
+                    <div>
+                        <p>更多流程曝光</p>
+                        <p><em>商品展示优先推荐，售出速度快</em></p>
+                    </div>
+                </div>
+                <div class="list_libiao display_flex">
+                    <span><s>3</s></span>
+                    <img src="/webs/images/WechatIMG222.png" alt="">
+                    <div>
+                        <p>店铺正规现象</p>
+                        <p><em>信誉等级区分，可信度与逼格蹭蹭涨</em></p>
+                    </div>
+                </div>
+                <div class="list_libiao display_flex">
+                    <span><s>4</s></span>
+                    <img src="/webs/images/WechatIMG223.png" alt="">
+                    <div>
+                        <p>优品专区展示</p>
+                        <p><em>优品在区域单独展示，提升商品曝光</em></p>
+                    </div>
+                </div>
+                <div class="list_libiao display_flex">
+                    <span><s>5</s></span>
+                    <img src="/webs/images/WechatIMG224.png" alt="">
+                    <div>
+                        <p>审核严格</p>
+                        <p><em>严格准守 <b class="color_zhuti">《认证商家服务承诺协议》</b></em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="shangjiaquanyi">
+            <p class="quanyi">认证流程</p>
+            <div class="list_items display_flex">
+                <div class="item_select">
+                    <img src="/webs/images/djsq@3x.png" alt="">
+                    <p>提交申请</p>
+                    <img src="/webs/images/jmjt.png" alt="" class="position_xf">
+                </div>
+                <div class="item_select">
+                    <img src="/webs/images/ptsh@3x.png" alt="">
+                    <p>平台审核</p>
+                    <img src="/webs/images/jmjt.png" alt="" class="position_xf">
+                </div>
+                <div class="item_select">
+                    <img src="/webs/images/jnbzj@3x.png" alt="">
+                    <p>缴纳保证金</p>
+                    <img src="/webs/images/jmjt.png" alt="" class="position_xf">
+                </div>
+                <div class="item_select">
+                    <img src="/webs/images/dpsx@3x.png" alt="">
+                    <p>店铺上线</p>
+                </div>
+            </div>
+        </div>
+        <div class="shangjiaquanyi">
+            <p class="quanyi">申请标准</p>
+            <div class="shengqing display_flex">
+                <div class="item_shengqing">
+                    <p>实名认证</p>
+                    <p>
+                        <img src="/webs/images/dp@3x.png" alt="">
+                        {if $isreal == 1}
+                        <span>已达标</span>
+                        {else \}
+                        <span>未达标</span>
+                        {/if}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="shangjiaquanyi">
+            <p class="quanyi">费用</p>
+            <ul>
+                <li>保证金：原价 <s>¥10000</s><b class="color_zhuti">限时优惠¥8000</b></li>
+                <li>店铺使用费/年： <b class="color_zhuti">限时免减</b></li>
+            </ul>
+            <img class="kefudianhua" src="/webs/images/yqzx@3x.png" alt="">
+        </div>
+        {if $isreal == 1}
+        <div class="bottom_all" onClick="javascript:location.href='/index/mine/busb.html';">
+            <button class="background_zhuti">确认并提交</button>
+        </div>
+        {else \}
+        <div class="bottom_all">
+            <button class="background_zhuti" style="background: #bababa">确认并提交</button>
+        </div>
+        {/if}
+    </div>
+    {if $isreal == 2}
+    <div class="authentication-bg">
+        <div class="popuo-login">
+            <div class="popup-top">
+                <img classs="popup-top-img" src="/webs/images/authentication-success.png">
+            </div>
+            <div class="popup-bottom">
+                <div>
+                    <div class="popup-font">抱歉!您的个人认证还未实名</div>
+                    <div class="popup-font-bottom">现在就去认证吧</div>
+                    <div class="reflect" onClick="javascript:location.href='/index/mine/renzheng.html'">去实名认证</div>
+                </div>
+                <div class="close-now" onClick="javascript:history.go(-1)">
+                    <img src="/webs/images/timg.png">
+                </div>
+            </div>
+        </div>
+    </div>
+    {/if}
+</div>
+</body>
+</html>

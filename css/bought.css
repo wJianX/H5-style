@@ -1,0 +1,92 @@
+.bought_all{
+    padding-top: .2rem;
+    bottom: 0 !important;
+}
+.list_product_item{
+    margin: .5rem;
+    padding: .5rem;
+    border-radius: .4rem;
+}
+.product_header .sp_img{
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 5rem;
+    margin-right: .5rem;
+}
+.product_header{
+    font-size: .8rem;
+}
+.left_all p{
+    line-height: 2rem;
+}
+.jiantou{
+    width: .4rem;
+    height: .7rem;
+    display: inline-block;
+    margin-left: .3rem;
+}
+.color_zhuti{
+    font-size: .7rem;
+}
+.jiesao_img img{
+    width: 5rem;
+    height: 5rem;
+}
+.jiesao_img{
+    justify-content: flex-start !important;
+    margin: .5rem 0;
+}
+.miaoshu_shopping{
+    margin-left: .5rem;
+}
+.miaoshu_shopping p{
+    font-size: .8rem;
+    width: 11rem;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    word-break:break-all;
+    overflow:hidden;
+    line-height: 2rem;
+}
+.biaojia{
+    font-size: .8rem;
+    margin-top: .6rem;
+}
+.biaojia em{
+    font-size: 1rem;
+}
+.biaojia span{
+    display: inline-block;
+    padding: .1rem .5rem;
+    background: #fae2e6;
+    margin-left: 1rem;
+}
+.biaojia a{
+    display: inline-block;
+    padding: .1rem .8rem;
+    background: #e1f6ed;
+    color: #3e885e;
+    font-size: .7rem;
+    margin-left: .2rem;
+}
+.lianxita{
+    margin: .5rem 0;
+}
+.lianxita p img{
+    width: 1rem;
+    margin-right: .5rem;
+}
+.lianxita p span{
+    font-size: .75rem;
+    color: #666666;
+}
+.lianxita p a{
+    display: inline-block;
+    width: 5rem;
+    line-height: 1.5rem;
+    font-size: .8rem;
+    border: .05rem solid #cccccc;
+    text-align: center;
+    color: #666666;
+    border-radius: .2rem;
+}

@@ -1,0 +1,314 @@
+@media only screen and (min-width:320px){html{font-size: 17.0667px !important}
+}
+@media only screen and (min-width:414px){html{font-size: 22.08px !important}
+}
+@media only screen and (min-width:480px){html{font-size:25.6px !important}
+}
+@media only screen and (min-width:569px){html{font-size: 30.3467px !important}
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+    font-family: PingFang SC, Helvetica Neue, Arial, sans-serif;
+    background: #f7f7f7;
+}
+html{
+    font-size: 36px;
+}
+s,a{
+    text-decoration: none;
+}
+#app::-webkit-scrollbar {
+    display: none;/*隐藏滚轮*/
+}
+
+.homo_page{
+    padding: .1rem .8rem;
+}
+input{
+    一webkit一appearance: none;
+}
+
+/*头部head*/
+.app_head{
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    background: #ffffff;
+    /*padding-top: 0.66667rem;*/
+    /*-webkit-box-shadow: 0 1px 6px #ccc;*/
+    /*box-shadow: 0 1px 6px #ccc;*/
+}
+.index_head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.49333rem 0.8rem;
+}
+.index-head-left{
+    width: 3rem;
+    margin: 0.30667rem 0;
+    cursor: pointer;
+}
+.index-head-left img{
+    width: .8rem;
+    display: block;
+}
+.index-head-location{
+    font-size: 0.34667rem;
+    margin: 0.30667rem 0;
+    left: 0.4rem;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+}
+.index-head-location img{
+    width: 2.4rem;
+    display: block;
+}
+.index-head-center{
+    text-align: center;
+    overflow: hidden;
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    padding: 0 1rem;
+    margin: 0.30667rem 1rem;
+    width: 100%;
+	font-weight: bold;
+}
+.index-head-con{
+    background: #f1f1f1;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    color: #333;
+    font-size: 0.32rem;
+    line-height: 1.2rem;
+    padding: 0 1rem;
+    margin: 0 1rem;
+    width: 100%;
+    position: relative;
+}
+.index-head-con input{
+    background: none;
+    border: none;
+    outline: none;
+    width: 90%;
+    padding: .2rem 1rem;
+    font-size: .6rem;
+    color: #969696;
+}
+.index-head-con i{
+    position: absolute;
+    top: 0;
+    left: 0.64rem;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.index-head-con i img{
+    width: .6rem;
+}
+.index-head-scan{
+    line-height: 1.33333rem;
+    /*position: absolute;*/
+    right: 0.4rem;
+    bottom: 0;
+}
+.index-head-scan img{
+    width: 1.2rem;
+}
+.right_text{
+    width: 3.2rem;
+    font-size: .8rem;
+    cursor: pointer;
+    text-align: right;
+    justify-content: flex-end !important;
+}
+.right_text a{
+    color: #333333;
+    text-decoration: none;
+}
+.app_center{
+    position: fixed;
+    top: 4.2rem !important;
+    bottom: 2.4rem !important; /*距离底部的距离为底部盒子的高度，自己也可以设置*/
+    width: 100%;
+    height: auto;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+    z-index:1;
+}
+
+.app_never{
+    font-size: .6rem;
+    text-align: center;
+    padding-bottom: .4rem;
+    position: relative;
+}
+
+.never_right{
+    width: 13%;
+    position: absolute;
+    right: .8rem;
+    top: -0.1rem;
+    background: #ffffff;
+    z-index: 2;
+    padding: .2rem 0;
+}
+.never_right a{
+    display: inline-block;
+    width: 1.8rem;
+    padding: .05rem 0;
+    border-radius: 10rem;
+    background: #f1f1f1;
+}
+.never_right p{
+    border-left: .04rem solid #f1f1f1;
+}
+.active{
+    color: #f84a74;
+    font-size: .7rem;
+}
+.active b{
+    border-bottom: #f84a74 .1rem solid;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.background_white{
+    background: #ffffff;
+}
+.display_flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.color_zhuti{
+    color: #f84a74;
+}
+.color_huise{
+    color: #393939;
+}
+.background_zhuti{
+    background: #f84a74;
+}
+::-ms-clear,::-ms-reveal{display:none;}
+li{
+    list-style: none !important;
+    padding: 0;
+    margin: 0;
+}
+.huishou img{
+    width: .8rem !important;
+}
+
+input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #cccccc;
+}
+input::-moz-placeholder { /* Firefox 19+ */
+    color: #cccccc;
+}
+input:-ms-input-placeholder { /* IE 10+ */
+    color: #cccccc;
+}
+input:-moz-placeholder { /* Firefox 18- */
+    color: #cccccc;
+}
+
+/*底部 footer*/
+.app_footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 2.4rem;
+    vertical-align: baseline;
+    z-index: 1;
+    background: #ffffff;
+}
+
+.van-tabbar-item__text{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.55rem;
+    line-height: 1;
+}
+.van-tabbar-item__text p{
+    height: .8rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-bottom: .2rem;
+}
+.van-tabbar-item__text img{
+    width: .8rem;
+}
+
+
+/*选择宽*/
+.mant_all{
+    padding: .5rem;
+}
+.parents{
+    align-items: center;
+}
+.shop_all{
+    justify-content: center !important;
+}
+.fubiaoti{
+    font-size: .6rem !important;
+}
+.fubiaoti b{
+    font-size: .6rem;
+    background: #f8e7e7;
+    padding: .1rem .3rem;
+    color: #d46256;
+    border-radius: .2rem;
+    margin-right: .3rem;
+}
+.xuanzhong{
+    border-radius: 5rem;
+    border: .1rem solid #e7e7e7;
+    width: .6rem;
+    display: inline-block;
+    height: .6rem;
+    position: absolute;
+    left: 0;
+}
+.checkeds{
+    background: url("../images/WechatIMG151.png") no-repeat;
+    background-size: 100% 100%;
+    border: none !important;
+    width:.7rem;
+    height: .7rem;
+}
+.checks{
+    margin-right: .5rem;
+    display: flex !important;
+    align-items: center;
+    position: relative;
+}
+.parents input{
+    visibility: hidden;
+    width: 1.2rem;
+    border: .1rem solid #e7e7e7;
+    display: inline-block;
+    height: 1.2rem;
+    padding: 0;
+    margin: 0;
+}
